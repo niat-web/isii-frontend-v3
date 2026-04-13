@@ -1,0 +1,233 @@
+import Layout from "@/components/Layout";
+import ParticipationBanner from "@/components/ParticipationBanner";
+
+const heroBackground = "https://res.cloudinary.com/dqataciy5/image/upload/v1770372546/Systemic_Interventions_and_Investments_3_xejyih.png";
+const heroBackgroundMobile = "https://res.cloudinary.com/dqataciy5/image/upload/v1770375856/1922_evdf29.png";
+
+// Card data array
+const interventionCards = [
+  {
+    id: 1,
+    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1769153348/d6748c4d-3deb-467e-9c54-856f765c9fbc_qar1fs.jpg",
+    alt: "Mass Financial Inclusion",
+    heading: "Mass Financial Inclusion",
+    description: "Focused on the transition of low income to middle income populations through the internationalisation of mass inclusion through direct services, intermediation of the financial systems layer, and the roll-out of technological platforms for mass inclusion and provision"
+  },
+  {
+    id: 2,
+    image: "https://res.cloudinary.com/dqataciy5/image/upload/v1767763690/7dc36b61-2f91-44de-a627-87adedcbe979_we1o4y.jpg",
+    alt: "Digital Technologies for Unlocking Human Performance",
+    heading: "Digital Technologies for Unlocking Human Performance",
+    description: "Focused on technologies for mass adoption of education, experiences, and higher levels of human performance, using multiple technologies to liberate minds and raise human consciousness, combining eastern and western definitions of enlightenment"
+  }
+];
+
+const sharedPrograms = [
+  {
+    id: 1,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/The+Cognitive+Sovereignty+Initiative.jpg",
+    alt: "The Cognitive Sovereignty Initiative",
+    heading: "The Cognitive Sovereignty Initiative",
+    description: "Securing the capacity of nations, institutions, and individuals to govern, compete, and choose freely in the face of cognitive capture in the rising tech-enabled Age of Systems."
+  },
+  {
+    id: 2,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/Industrial-Societal+Transition%2C+AI+Trust+Labs.png",
+    alt: "Industrial-Societal Transition, AI Trust Labs",
+    heading: "Industrial-Societal Transition, AI Trust Labs",
+    description: "Designing the institutional, industrial, and social architectures that allow nations to transition constructively into the information era without fracture or subordination."
+  },
+  {
+    id: 3,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/National+Prosperity+and+Growth%C2%A0.jpg",
+    alt: "National Prosperity and Growth",
+    heading: "National Prosperity and Growth",
+    description: "Building the systems of enterprise, growth, and wealth creation that deliver the prosperity without which no nation can sustain stability, sovereignty, or freedom."
+  },
+  {
+    id: 4,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/Large+Scale+Thematic+Capital%C2%A0Allocation.jpg",
+    alt: "Large Scale Thematic Capital Allocation",
+    heading: "Large Scale Thematic Capital Allocation",
+    description: "Mobilising and directing capital toward the transitions, technologies, and sovereignties that will determine the distribution of power and wealth in the next era."
+  },
+  {
+    id: 5,
+    image: "https://isii-v2.s3.ap-south-1.amazonaws.com/isii_images/Prioritised+Programmes+for+Intervention/mass_financial_inclusion.jpg",
+    alt: "Mass Financial Inclusion",
+    heading: "Mass Financial Inclusion",
+    description: "The spread of mass financial inclusion in the conversion of low to middle income populations through technology, financial, and policy change."
+  }
+];
+
+const SystemicIntervention = () => {
+  return (
+    <Layout>
+      <style>{`
+        @media (min-width: 1440px) {
+          .intervention-card {
+            height: 266px !important;
+            width: 1420px !important;
+          }
+        }
+      `}</style>
+      {/* Hero Section - Small Banner */}
+      <section className="relative w-full overflow-hidden">
+        {/* Mobile Background - shown only on screens smaller than md (768px) */}
+        <div 
+          className="block md:hidden w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroBackgroundMobile})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-xl font-bold">
+                Programmes & Interventions
+              </h1>
+            </div>
+          </div>
+        </div>
+        {/* Desktop Background - shown only on md screens and larger (768px+) */}
+        <div 
+          className="hidden md:block w-full relative"
+          style={{ 
+            backgroundImage: `url(${heroBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '180px'
+          }}
+        >
+          <div className="absolute inset-0 flex items-center">
+            <div className="container-custom section-padding w-full">
+              <h1 className="text-white font-sans text-xl md:text-2xl lg:text-3xl font-bold">
+                Programmes & Interventions
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="pt-8 md:pt-10 pb-16 md:pb-20 relative" style={{ backgroundColor: '#F3F5F7' }}>
+        {/* Pink vertical strip on the left */}
+        <div 
+          className="absolute left-0 top-0 bottom-0 w-1 md:w-2"
+          style={{ backgroundColor: '#f8d7da' }}
+        />
+        
+        <div className="container-custom section-padding">
+          {/* Prioritised Programmes Heading */}
+          <div className="max-w-[1420px] mx-auto mb-6 md:mb-8">
+            <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">
+              Prioritised Programmes
+            </h2>
+          </div>
+
+          {/* Cards Container */}
+          <div className="max-w-[1420px] mx-auto" style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            {interventionCards.map((card) => (
+              <div
+                key={card.id}
+                className="bg-white rounded-lg border border-gray-200 mx-auto"
+                style={{
+                  width: '100%',
+                  maxWidth: '1420px',
+                  padding: '32px',
+                  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)'
+                }}
+              >
+                <div className="flex flex-col md:flex-row items-start" style={{ gap: '32px' }}>
+                  {/* Image - Left side - Smaller square */}
+                  <div className="flex-shrink-0 w-full md:w-[220px]" style={{ maxWidth: '220px' }}>
+                    <div
+                      className="rounded-lg overflow-hidden"
+                      style={{
+                        width: '100%',
+                        aspectRatio: '1 / 1', // square image container
+                      }}
+                    >
+                      <img
+                        src={card.image}
+                        alt={card.alt}
+                        className="w-full h-full rounded-lg"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Content - Right side - Flexible width */}
+                  <div 
+                    className="flex flex-col flex-1 w-full md:w-auto"
+                    style={{
+                      gap: '16px'
+                    }}
+                  >
+                    <h2 
+                      className="font-serif text-xl md:text-2xl font-bold leading-tight"
+                      style={{ color: '#01002A', margin: 0 }}
+                    >
+                      {card.heading}
+                    </h2>
+                    <p 
+                      className="leading-relaxed text-base"
+                      style={{ color: '#4a4a4a', fontWeight: 400, margin: 0 }}
+                    >
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pipeline Programmes Section */}
+      <section className="pt-0 pb-2 md:pb-4" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container-custom section-padding">
+          <div className="border-b border-border py-4 md:py-6 pt-8 md:pt-12">
+            <h2 className="font-sans text-xl md:text-2xl lg:text-3xl text-primary leading-relaxed font-bold">
+              Prioritised Shared Programs
+            </h2>
+          </div>
+          {sharedPrograms.map((program, index) => (
+            <div
+              key={program.id}
+              className={index === sharedPrograms.length - 1 ? "border-t border-border py-4 md:py-6" : "border-b border-border py-4 md:py-6"}
+            >
+              <div className="flex items-start" style={{ gap: '1em' }}>
+                <div className="flex-shrink-0" style={{ width: '60px', height: '60px' }}>
+                  <img
+                    src={program.image}
+                    alt={program.alt}
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="font-sans text-lg md:text-xl text-primary leading-relaxed font-bold" style={{ margin: 0, textAlign: 'left' }}>
+                    {program.heading}
+                  </p>
+                  <p className="mt-2 text-sm md:text-base leading-relaxed text-foreground" style={{ marginBottom: 0, textAlign: 'left' }}>
+                    {program.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Participation Banner */}
+      <ParticipationBanner />
+    </Layout>
+  );
+};
+
+export default SystemicIntervention;
+

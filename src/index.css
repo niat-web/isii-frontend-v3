@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 241 100% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 241 100% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 241 100% 8%;
+
+    --primary: 241 100% 8%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 241 100% 8%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 213 20% 45%;
+
+    --accent: 240 59% 74%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 213 20% 85%;
+    --input: 213 20% 85%;
+    --ring: 241 100% 8%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --navy: 241 100% 8%;
+    --navy-dark: 241 100% 5%;
+    --navy-light: 213 40% 35%;
+    --amber: 180 58% 60%;
+    --amber-hover: 180 58% 52%;
+    --cream: 40 30% 97%;
+    --gray-light: 210 20% 96%;
+
+    --font-serif: 'Calibri', 'Calibri Light', 'Calibri Bold', 'Candara', 'Segoe UI', 'Arial', sans-serif;
+    --font-sans: 'Heebo', sans-serif;
+  }
+
+  .dark {
+    --background: 213 50% 10%;
+    --foreground: 210 40% 98%;
+    --card: 213 50% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 213 50% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 241 100% 8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 213 40% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 213 40% 20%;
+    --muted-foreground: 213 20% 65%;
+    --accent: 240 59% 74%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 213 40% 25%;
+    --input: 213 40% 25%;
+    --ring: 210 40% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 md:px-8 lg:px-16 xl:px-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}

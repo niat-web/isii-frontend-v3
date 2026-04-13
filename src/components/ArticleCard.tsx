@@ -1,0 +1,42 @@
+import { ArrowRight } from "lucide-react";
+
+interface ArticleCardProps {
+  image: string;
+  date: string;
+  title: string;
+  link: string;
+}
+
+const ArticleCard = ({ image, date, title, link }: ArticleCardProps) => {
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block bg-card border border-border overflow-hidden group animate-fade-in h-full flex flex-col transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl hover:-translate-y-1 rounded-none no-underline"
+      style={{ backgroundColor: '#f1f1f1' }}
+    >
+      <div className="aspect-[16/9] bg-muted overflow-hidden flex-shrink-0">
+        <img 
+          src={image} 
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+      
+      <div className="p-5 flex flex-col flex-grow">
+        <p className="text-xs italic text-black mb-2">{date}</p>
+        <h3 className="font-serif text-sm font-bold text-primary mb-4 leading-snug flex-grow line-clamp-3">
+          {title}
+        </h3>
+        {link && (
+          <div className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors mt-auto">
+            Read more <ArrowRight className="w-4 h-4" />
+          </div>
+        )}
+      </div>
+    </a>
+  );
+};
+
+export default ArticleCard;
