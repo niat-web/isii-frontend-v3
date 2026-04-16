@@ -1,23 +1,17 @@
 const S3_BUCKET_HOST = "isii-v2.s3.ap-south-1.amazonaws.com";
-
-const isLocalHost = (hostname: string) =>
-  hostname === "localhost" ||
-  hostname === "127.0.0.1" ||
-  hostname === "::1";
-
-const shouldBypassMasking = () =>
-  typeof window !== "undefined" && isLocalHost(window.location.hostname);
-
-const getRuntimeOrigin = () => {
-  if (typeof window === "undefined") {
-    return "https://www.isii.global";
-  }
-
-  return window.location.origin;
-};
+const MASKED_FILES_BASE_URL = "https://www.isii.global/files";
 
 const buildMaskedFileUrl = (path: string) =>
-  `${getRuntimeOrigin()}/files/${path}`;
+  `${MASKED_FILES_BASE_URL}/${path}`;
+
+const isAlreadyMaskedFileUrl = (value = "") => {
+  try {
+    const parsedUrl = new URL(value);
+    return parsedUrl.href.startsWith(`${MASKED_FILES_BASE_URL}/`);
+  } catch {
+    return false;
+  }
+};
 
 const getNormalizedS3Path = (value = "") => {
   if (!value) {
@@ -42,7 +36,7 @@ export const getMaskedFileUrl = (value = "") => {
     return value;
   }
 
-  if (shouldBypassMasking()) {
+  if (isAlreadyMaskedFileUrl(value)) {
     return value;
   }
 
@@ -54,4 +48,3 @@ export const getMaskedFileUrl = (value = "") => {
 
   return buildMaskedFileUrl(normalizedPath);
 };
-
